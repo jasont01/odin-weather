@@ -1,0 +1,25 @@
+{
+  "name": "odin-weather",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:jasont01/odin-weather.git",
+  "author": "Jason Thompson <jason@jasont.us>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "deploy": "npm run build && git subtree push --prefix dist origin gh-pages"
+  },
+  "dependencies": {
+    "@babel/core": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "node-sass": "^4.14.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}
