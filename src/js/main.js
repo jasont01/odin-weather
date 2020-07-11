@@ -1,7 +1,8 @@
 const API_KEY='e8556c4fa07ab331b78b7bd73055b650';
 
+const background = document.getElementById('background');
 const input = document.querySelector('input');
-const btn = document.querySelector('button');
+const form = document.querySelector('form');
 const output = document.getElementById('results');
 
 const location = document.getElementById('location');
@@ -13,11 +14,13 @@ const humidity = document.getElementById('humidity');
 const pressure = document.getElementById('pressure');
 const compass = document.querySelector('.compass');
 const date = document.getElementById('date');
+const celsius = false;
 
-btn.addEventListener('click', getWeather);
+form.addEventListener('submit', getWeather);  
 
-async function getWeather() {
-  const location = input.value;
+async function getWeather(e) {
+  e.preventDefault();
+  const location = input.value || '33064';
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`;
   
   const result = await fetch(url);
@@ -26,10 +29,10 @@ async function getWeather() {
   render(data);
 }
 
-function convertTemp(temp) {
+function convertTemp(temp, celsius) {
   const degC = temp - 273.15;
   const degF = degC * (9/5) + 32;
-  return degF.toFixed(1);
+  return (celsius) ? degC.toFixed(1) : degF.toFixed(0);
 }
 
 function getHeading(deg) {
@@ -42,11 +45,15 @@ function render(data) {
   location.innerHTML = data.name;
   icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
   conditions.innerHTML = data.weather[0].main;
-  currentTemp.innerHTML = convertTemp(data.main.temp)
-  feelsLike.innerHTML = convertTemp(data.main.feels_like);
+  const units = (celsius) ? "&#x2103" : "&#x2109"
+  currentTemp.innerHTML = convertTemp(data.main.temp, celsius) + `<span id="units">${units}</span>`;
+  feelsLike.innerHTML = convertTemp(data.main.feels_like, celsius) + units;
   humidity.innerHTML = data.main.humidity;
   pressure.innerHTML = data.main.pressure;
   compass.querySelector('p').innerHTML = `${getHeading(data.wind.deg)}<span>${data.wind.speed}MPH</span>`;
   compass.querySelector('.arrow').style.transform = `rotate(${data.wind.deg}deg)`;
   date.innerHTML = new Date(data.dt * 1000);
+
+  background.classList = (data.weather[0].main).toLowerCase();
+  output.style.display = 'block';
 }

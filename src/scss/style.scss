@@ -1,30 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 body {
-  background: url('../img/rain.jpg') no-repeat;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+#background {
+  height: 100vh;
+  background: url('../img/clear.jpg') no-repeat;
   background-size: cover;
+  transition: 0.4s;
+  &.clouds {
+    background-image: url('../img/clouds.jpg');
+  }
+  &.fog {
+    background-image: url('../img/fog.jpg');
+  }
+  &.rain {
+    background-image: url('../img/rain.jpg');
+  }
+  &.snow {
+    background-image: url('../img/snow.jpg');
+  }
+  &.thunderstorm {
+    background-image: url('../img/thunderstorm.jpg');
+  }
+}
+
+#container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #results {
+  display: none;
   position: relative;
-  width: 400px;
+  width: 340px;
   height: 200px;
-  background: rgb(105, 103, 223);
+  margin-bottom: 100px;
+  background: rgba(105, 105, 105, 0.95);
   border: 2px solid black;
 
   #location {
     position: absolute;
-    left: 180px;
+    width: 100%;
     font-size: 1.2em;
+    text-align: center;
   }
 
   #icon {
     position: absolute;
     left: -30px;
-    top: -30px;
+    top: -20px;
   }
 
   #current-conditions {
     position: absolute;
-    top: 130px;
+    top: 140px;
     left: 50px;
   }
   
@@ -35,15 +70,19 @@ body {
 
   #current-temp {
     position: absolute;
-    right: 25%;
-    top: 20%;
+    left: 140px;
+    top: 25px;
     font-size: 4em;
+    #units {
+      font-size: .5em;
+      vertical-align: text-top;
+    }
   }
 
   #other-info {
     position: absolute;
-    top: 55%;
-    right: 50px;
+    top: 120px;
+    left: 150px;
     font-size: .8em;
   }
 
@@ -54,5 +93,7 @@ body {
   #date {
     color: lightgray;
     font-size: .6em;
+    bottom: 2px;
+    left: 2px;
   }
 }

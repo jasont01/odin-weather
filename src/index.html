@@ -6,28 +6,38 @@
   <title>Weather Forecast</title>
 </head>
 <body>
-  <input type="text">
-  <button>Search</button>
+  <div id="background">
+    <div id="container">
 
-  <div id="results">
-    <p id="location">Concord, NC</p>
-    <img src="https://openweathermap.org/img/wn/10d@4x.png" alt="" id="icon">
-    <p id="current-conditions">Rain</p>
-    <p id="current-temp">90 F</p>
-    <div id="other-info">
-      <p>Feels Like: <span id="feels-like">92</span></p>
-      <p>Humidity: <span id="humidity">97%</span></p>
-      <p>Pressure: <span id="pressure">137</span></p>
-    </div>
+      <h1>Weather</h1>
 
-    <div class="compass">
-      <div class="direction">
-        <p>NE<span>10 mph</span></p>
+      <div id="results">
+        <div id="location"></div>
+        <img src="https://openweathermap.org/img/wn/10d@4x.png" alt="" id="icon">
+        <p id="current-conditions"></p>
+        <p id="current-temp"></p>
+        <div id="other-info">
+          <p>Feels Like: <span id="feels-like"></span></p>
+          <p>Humidity: <span id="humidity"></span>%</p>
+          <p>Pressure: <span id="pressure"></span> hPa</p>
+        </div>
+        
+        <div class="compass">
+          <div class="direction">
+            <p><span></span></p>
+          </div>
+          <div class="arrow"></div>
+        </div>
+        
+        <p id="date"></p>
       </div>
-      <div class="arrow"></div>
+      
+      <form>
+        <input type="text" placeholder="Enter Location" autofocus>
+        <button type="submit">Search</button>
+      </form>
+      
     </div>
-
-    <p id="date">July 10, 2020 7:18PM</p>
   </div>
 </body>
 </html>
