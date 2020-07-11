@@ -1,0 +1,58 @@
+body {
+  background: url('../img/rain.jpg') no-repeat;
+  background-size: cover;
+}
+
+#results {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  background: rgb(105, 103, 223);
+  border: 2px solid black;
+
+  #location {
+    position: absolute;
+    left: 180px;
+    font-size: 1.2em;
+  }
+
+  #icon {
+    position: absolute;
+    left: -30px;
+    top: -30px;
+  }
+
+  #current-conditions {
+    position: absolute;
+    top: 130px;
+    left: 50px;
+  }
+  
+  #date {
+    position: absolute;
+    bottom: 0;
+  }
+
+  #current-temp {
+    position: absolute;
+    right: 25%;
+    top: 20%;
+    font-size: 4em;
+  }
+
+  #other-info {
+    position: absolute;
+    top: 55%;
+    right: 50px;
+    font-size: .8em;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  #date {
+    color: lightgray;
+    font-size: .6em;
+  }
+}

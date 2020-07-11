@@ -1,7 +1,7 @@
 {
   "name": "odin-weather",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "./src/index.js",
   "repository": "git@github.com:jasont01/odin-weather.git",
   "author": "Jason Thompson <jason@jasont.us>",
   "license": "MIT",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
+    "autoprefixer": "^9.8.4",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.6.0",
     "file-loader": "^6.0.0",

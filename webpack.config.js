@@ -9,7 +9,7 @@ const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 });
 
 module.exports = {
-  entry: './src/js/index.js',
+  entry: './src/index.js',
   mode: 'development',
   devtool: 'source-map',
   output: {
