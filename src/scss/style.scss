@@ -1,99 +1,132 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
+  font-family: 'Noto Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
 }
 
 #background {
+  background: #e8ebf3;
   height: 100vh;
-  background: url('../img/clear.jpg') no-repeat;
+  width: 100%;
   background-size: cover;
-  transition: 0.4s;
+  &.clear {
+    background-image: url("../img/clear.jpg");
+  }
   &.clouds {
-    background-image: url('../img/clouds.jpg');
+    background-image: url("../img/clouds.jpg");
   }
   &.fog {
-    background-image: url('../img/fog.jpg');
+    background-image: url("../img/fog.jpg");
   }
   &.rain {
-    background-image: url('../img/rain.jpg');
+    background-image: url("../img/rain.jpg");
   }
   &.snow {
-    background-image: url('../img/snow.jpg');
+    background-image: url("../img/snow.jpg");
   }
   &.thunderstorm {
-    background-image: url('../img/thunderstorm.jpg');
+    background-image: url("../img/thunderstorm.jpg");
   }
 }
 
-#container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+#title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 5rem;
+  position: absolute;
+  top: 20%;
+  &.open {
+    font-size: 3rem;
+    top: 2%;
+    right: 5%;
+  }
 }
 
-#results {
+.weather-info {
+  position: absolute;
+  width: 80%;
+  top: 10%;
+  left: 10%;
   display: none;
+}
+
+.location {
+  font-size: 2rem;
+  line-height: 3.5rem;
+  margin: 0px;
+}
+
+.conditions {
+  font-size: 2.2rem;
+  letter-spacing: 0.1rem;
+  padding-left: 0.3rem;
+  margin: 0px;
+}
+
+.icon {
+  position: absolute;
+  bottom: 50%;
+  left: 25%;
+}
+
+.current-temp {
+  font-family: 'Anton', sans-serif;
+  font-size: 10rem;
   position: relative;
-  width: 340px;
-  height: 200px;
-  margin-bottom: 100px;
-  background: rgba(105, 105, 105, 0.95);
-  border: 2px solid black;
+}
 
-  #location {
+.current-temp::after {
+  content: '\00B0 F';
+  font-size: 3rem;
+  position: absolute;
+  top: 1.8rem;
+  left: 10rem;
+}
+
+.details {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+  position: absolute;
+  border-left: 0.2rem solid rgba(255, 255, 255, 0.5);
+  top: 42%;
+  left: 15rem;
+  //width: 20rem;
+  padding-left: 2.5rem;
+  justify-content: space-between;
+  p:first-child {
+    margin-top: 0px;
+  }
+  p:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.feels-like {
+  position: relative;
+  &::after {
+    content: '\00B0 F';
     position: absolute;
-    width: 100%;
-    font-size: 1.2em;
-    text-align: center;
+    left: 1.8rem;
+    font-size: 1rem;
   }
+}
 
-  #icon {
+.humidity {
+  position: relative;
+  &::after {
+    content: '%';
     position: absolute;
-    left: -30px;
-    top: -20px;
+    font-size: 1.2rem;
   }
+}
 
-  #current-conditions {
-    position: absolute;
-    top: 140px;
-    left: 50px;
-  }
-  
-  #date {
-    position: absolute;
-    bottom: 0;
-  }
-
-  #current-temp {
-    position: absolute;
-    left: 140px;
-    top: 25px;
-    font-size: 4em;
-    #units {
-      font-size: .5em;
-      vertical-align: text-top;
-    }
-  }
-
-  #other-info {
-    position: absolute;
-    top: 120px;
-    left: 150px;
-    font-size: .8em;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  #date {
-    color: lightgray;
-    font-size: .6em;
-    bottom: 2px;
-    left: 2px;
-  }
+#date {
+  font-size: xx-small;
 }
