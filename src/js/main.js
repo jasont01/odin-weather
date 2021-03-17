@@ -1,7 +1,6 @@
 //TODOs: -keep search box active on results view
-//       -autocomplete locations
-//       -change units option
-//       -show state/country if not us
+//       -change units option - api has 'units' parameter
+//       -add non-US cities
 
 const API_KEY='e8556c4fa07ab331b78b7bd73055b650';
 
@@ -10,7 +9,7 @@ const title =document.getElementById('title');
 const input = document.querySelector('input');
 const output = document.querySelector('.weather-info');
 
-const location = document.querySelector('.location');
+const city = document.querySelector('.location');
 const icon = document.querySelector('.icon');
 const conditions = document.querySelector('.conditions');
 const currentTemp = document.querySelector('.current-temp');
@@ -22,21 +21,33 @@ const compass = document.querySelector('.compass');
 const date = document.getElementById('date');
 const celsius = false;
 
-input.addEventListener('keydown', getWeather);
+//input.addEventListener('keydown', getWeather);
 
-async function getWeather(e) {
-if (e.keyCode != 13 || input.value == '') return;
-  e.preventDefault();
-  //const location = input.value || '33064';
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${API_KEY}`; // TODO: api has 'units' parameter
+// async function getWeather(e) {
+// if (e.keyCode != 13 || input.value == '') return;
+//   e.preventDefault();
+//   //const location = input.value || '33064';
+//   const url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${API_KEY}`;
   
-  const result = await fetch(url);
-  const data = await result.json();
+//   const result = await fetch(url);
+//   const data = await result.json();
   
-  render(data);
-  input.value = '';
-  console.log(data)
-}
+//   render(data);
+//   input.value = '';
+//   console.log(data)
+// }
+
+async function fetchWeatherData(location) {
+
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${location.id}&appid=${API_KEY}`;
+    
+    const result = await fetch(url);
+    const data = await result.json();
+    
+    console.log(data)
+    input.value = '';
+    render(data, location);
+  }
 
 function convertTemp(temp, celsius) {
   const degC = temp - 273.15;
@@ -50,8 +61,8 @@ function getHeading(deg) {
   return arr[(val % 16)];
 }
 
-function render(data) {
-  location.innerHTML = data.name;
+function render(data, location) {
+  city.innerHTML = `${location.name}, ${location.state}`;
   icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
   conditions.innerHTML = data.weather[0].main;
   //const units = (celsius) ? "&#x2103" : "&#x2109"
@@ -68,3 +79,5 @@ function render(data) {
   title.classList = 'open';
   output.style.display = 'block';
 }
+
+export { fetchWeatherData as default }

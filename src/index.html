@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/22f61d7fe5.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@8.3.2/dist/css/autoComplete.min.css">
   <title>Weather App</title>
 </head>
 
@@ -35,15 +34,18 @@
 
   <div id="title">Weather App</div>
 
-  <div class="search">
-    <input type="text" placeholder="Location" />
-    <div class="symbol">
-      <svg class="cloud">
-        <use xlink:href="#cloud" />
-      </svg>
-      <svg class="lens">
-        <use xlink:href="#lens" />
-      </svg>
+  <div class="autoComplete_wrapper">
+
+    <div class="search">
+      <input id="autoComplete" type="text" tabindex="1" placeholder="Location" />
+      <div class="symbol">
+        <svg class="cloud">
+          <use xlink:href="#cloud" />
+        </svg>
+        <svg class="lens">
+          <use xlink:href="#lens" />
+        </svg>
+      </div>
     </div>
   </div>
 
@@ -63,7 +65,7 @@
     </symbol>
   </svg>
 
-  <input id="autoComplete" tabindex="1">
+  <!-- <input id="autoComplete"> -->
 
   <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@8.3.2/dist/js/autoComplete.min.js"></script>
 </body>
